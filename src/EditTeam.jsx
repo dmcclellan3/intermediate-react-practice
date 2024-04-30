@@ -8,15 +8,15 @@ const initialState = {
 const Title = () => {
   return (
     <h1 className="d-flex justify-content-center">
-     Team Summary
+      Enter Player
     </h1>
   )
 }
 
-function App() {
+function EditTeam() {
   return (
     <div className="p-5">
-      <Link to='./EditTeam'>Edit Team</Link>
+      <Link to='/'>Team Summary</Link>
       <Title />
       <h2 className="d-flex justify-content-center mb-5"></h2>
       <form>
@@ -44,4 +44,22 @@ function App() {
 }
 
 
-export default App
+// export default EditTeam
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export default EditTeam
