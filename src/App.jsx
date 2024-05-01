@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom"
-import { useReducer } from "react"
+import React, { useContext } from 'react'
+import { teamContext} from './main'
 
-const initialState = {
-  //What to place here for the page?
+
+const TeamSummary = () => {
+  const { state } = useContext(teamContext);
+
 }
+
 
 const Title = () => {
   return (
@@ -18,27 +22,11 @@ function App() {
     <div className="p-5">
       <Link to='./EditTeam'>Edit Team</Link>
       <Title />
-      <h2 className="d-flex justify-content-center mb-5"></h2>
-      <form>
-        <label>Player name:
-        <input type="text" />
-        </label>
-      </form>
-      <form>
-        <label>Player name:
-        <input type="text" />
-        </label>
-      </form>
-      <form>
-        <label>Player name:
-        <input type="text" />
-        </label>
-      </form>
-      <form>
-        <label>Player name:
-        <input type="text" />
-        </label>
-      </form>
+      <ul>
+        {state.players.map((player, index) => (
+          <li key={index}>{player}</li>
+        ))}
+      </ul>
     </div>
   )
 }

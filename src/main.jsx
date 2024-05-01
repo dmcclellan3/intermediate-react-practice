@@ -1,22 +1,33 @@
-import React, { createContext } from 'react'
-export const GameContext = createContext()
+import React from 'react';
+import { createContext, useReducer } from 'react';
 import ReactDOM from 'react-dom/client'
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Outlet,
-} from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom'
+
+
+
 
 // project styles
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 
-import About from './About'
+
 import App from './App'
 import EditTeam from './EditTeam'
 import ErrorPage from './ErrorPage'
-import Header from './Header'
-import Footer from './Footer'
+
+import { initialTeamState } from './team-reducer';
+import { teamReducer } from './team-reducer';
+
+export const TeamContext = createContext(null);
+
+const TeamProvider = ({ children }) => {
+  const [state, dispatch] = useReducer(teamReducer, initialTeamState);
+  return (
+    <TeamContext.Provider value={{ state, dispatch }}>
+      {children}
+    </TeamContext.Provider>
+  );
+};
 
 
 function Layout() {

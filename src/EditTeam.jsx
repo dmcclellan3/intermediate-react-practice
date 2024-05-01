@@ -1,9 +1,12 @@
 import { Link } from "react-router-dom"
-import { useReducer } from "react"
+import { TeamContext } from "./main"
+import { useContext, useState } from "react"
 
 const initialState = {
-  //What to place here for the page?
+  players : [],
 }
+
+
 
 const Title = () => {
   return (
@@ -13,53 +16,30 @@ const Title = () => {
   )
 }
 
+const AddPlayerForm = () => {
+  const { dispatch } = useContext(TeamContext);
+  const [playerName, setPlayerName] = useState('');
+  }
+  const handleAddPlayer = () => {
+    dispatch({ type: 'ADD_PLAYER', payload: playerName });
+    setPlayerName('');
+  };
+
 function EditTeam() {
   return (
     <div className="p-5">
       <Link to='/'>Team Summary</Link>
       <Title />
-      <h2 className="d-flex justify-content-center mb-5"></h2>
-      <form>
-        <label>Player name:
-        <input type="text" />
-        </label>
-      </form>
-      <form>
-        <label>Player name:
-        <input type="text" />
-        </label>
-      </form>
-      <form>
-        <label>Player name:
-        <input type="text" />
-        </label>
-      </form>
-      <form>
-        <label>Player name:
-        <input type="text" />
-        </label>
-      </form>
+      <input
+        type="text"
+        value={playerName}
+        onChange={(e) => setPlayerName(e.target.value)}
+        placeholder="Enter player name"
+      />
+      <button onClick={handleAddPlayer}>Add Player</button>
     </div>
   )
 }
-
-
-// export default EditTeam
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 export default EditTeam
